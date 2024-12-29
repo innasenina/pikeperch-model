@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# The command line for this scripts is
+# ppmodel [option]
+# where options can be: "estimate", "fit", "bootstrap", "validate", "forecast", "scenario" and "all", which are
+
+# 'estimate' - parameter estimation and bootstrapping to get parameter errors.
+# 'fit' 	 - parameter estimation only (default).
+# 'bootstrap'- bootstrapping only.
+# 'validate' - validation using estimated parameters.
+# 'forecast' - CC forecast with base scenario and two pre-set scenarios: with T-2 and S-3 and with additional INTRO=10. This option generates Figures 1-2.
+# 'scenario' - CC projections with all combinations of additional scenarios for stocking and abiotic factors to compute and return a table with probabilities.
+
+# If option is absent, the command runs parameter estimation only.
+
+args=( $@ )
+len=${#args[@]}
+
+arg=$1
+
+
+#wdir=$PP_HOME
+wdir="./"
+
+Rscript ${wdir}/R/pp-config.R ${wdir} "${arg}"
+
